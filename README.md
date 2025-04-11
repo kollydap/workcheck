@@ -26,7 +26,7 @@ WorkCheck is a modern employee attendance tracking system built with FastAPI, SQ
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/workcheck.git
+git clone https://github.com/kollydap/workcheck.git
 cd workcheck
 ```
 
