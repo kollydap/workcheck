@@ -10,7 +10,7 @@ from app.api.deps import get_current_user
 from app.core.config import settings
 from app.core.security import create_access_token
 from app.db.session import get_db
-from app.models.user import User
+from app.schemas.user import User
 from app.schemas.token import Token
 from app.services.user import authenticate_user, get_user_by_email
 

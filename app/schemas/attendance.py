@@ -20,7 +20,7 @@ class AttendanceBase(BaseModel):
 class AttendanceCheckIn(BaseModel):
     latitude: Optional[float] = None
     longitude: Optional[float] = None
-    check_in_method: str = Field(..., regex="^(QR|NFC|MANUAL)$")
+    check_in_method: str = Field(..., pattern="^(QR|NFC|MANUAL)$")
     notes: Optional[str] = None
 
 
@@ -28,7 +28,7 @@ class AttendanceCheckIn(BaseModel):
 class AttendanceCheckOut(BaseModel):
     latitude: Optional[float] = None
     longitude: Optional[float] = None
-    check_out_method: str = Field(..., regex="^(QR|NFC|MANUAL)$")
+    check_out_method: str = Field(..., pattern="^(QR|NFC|MANUAL)$")
     notes: Optional[str] = None
 
 

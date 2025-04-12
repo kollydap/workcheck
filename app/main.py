@@ -4,13 +4,14 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.v1.endpoints import auth, attendance, companies, users
 from app.core.config import settings
+
 from app.db.init_db import create_first_superuser
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version="1.0.0",
     description="WorkCheck: A robust employee attendance system with QR code and NFC capabilities",
-    openapi_url=f"{settings.API_V1_STR}/openapi.json"
+    openapi_url=f"{settings.API_V1_STR}/openapi.json",
 )
 
 # Set up CORS
@@ -32,6 +33,7 @@ app.include_router(attendance.router, prefix=settings.API_V1_STR, tags=["attenda
 @app.on_event("startup")
 async def startup_event():
     await create_first_superuser()
+
 
 @app.get("/")
 def read_root():
