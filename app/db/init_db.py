@@ -12,21 +12,25 @@ from sqlalchemy import select
 
 logger = logging.getLogger(__name__)
 
+
 async def create_first_superuser() -> None:
     async with AsyncSessionLocal() as db:
         # Use select() instead of query()
-        result = await db.execute(select(User).where(User.email == settings.FIRST_SUPERUSER))
+        result = await db.execute(
+            select(User).where(User.email == settings.FIRST_SUPERUSER)
+        )
         user = result.scalars().first()
-        
+
         if not user:
             user_in = UserCreate(
                 email=settings.FIRST_SUPERUSER,
                 password=settings.FIRST_SUPERUSER_PASSWORD,
                 is_superuser=True,
-                full_name="Initial Admin"
+                full_name="Initial Admin",
             )
             await create_user(db=db, user_create=user_in)
             logger.info("Created first superuser")
+
 
 # async def create_first_superuser() -> None:
 #     async with AsyncSessionLocal() as db:
